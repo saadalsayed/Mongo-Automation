@@ -1,0 +1,52 @@
+restartpolicy: Never
+clustertypenonprod: dxl-pre-cz
+clustertypeprod: dxl-prod-cz
+
+containers: 
+  name: mongosh
+  stdin: true
+  image: 728642754198.dkr.ecr.eu-central-1.amazonaws.com/dxl-cz-ocp:ga-mongodb-4.4.6
+
+
+  
+configmap: 
+  name: db-creation
+  mountPath: /tmp
+  show_mountpath: /data
+  defaultMode: "0777"
+
+namespace_pre: 
+  namesapce: dxl-pre-cz
+  labels: 
+    namespace: dxl-pre-cz
+    name: mongosh-pre
+  secret: 
+    name: mongo-pre-cred
+
+namespace_dev: 
+  namesapce: dxl-dev-cz
+  labels: 
+  secret: 
+    name: mongo-dev-cred
+
+namespace_int: 
+  namesapce: dxl-int-cz
+  secret: 
+    name: mongo-int-cred
+
+namespace_sys: 
+  namesapce: dxl-sys-cz
+  secret: 
+    name: mongo-sys-cred
+
+namespace_prod: 
+  namesapce: dxl-prod-cz
+  secret: 
+    name: mongo-prod-cred
+resources:
+      limits:
+        cpu: +100m
+        memory: 128Mi
+      requests:
+        cpu: +100m
+        memory: 128Mi

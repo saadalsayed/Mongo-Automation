@@ -1,0 +1,28 @@
+- name: Jira ticket 
+  gather_facts: false 
+  vars_files: 
+   -  vars/jira-vars.yaml
+  vars_prompt: 
+    - name: token
+      prompt: Please ,enter yur token. 
+  hosts: localhost
+  tasks: 
+  - name: create Jira Ticket for db users creation
+    community.general.jira:
+      uri: '{{ gatserver }}'
+      token: '{{ token }}'
+      project: '{{ gatproject  }}'
+      validate_certs: false
+      operation: create
+      summary: '{{ title }}'
+      description: '{{ description }}'
+      issuetype: Demand
+    args:
+      fields:
+       customfield_24902: {"value": "MongoDB"}
+       customfield_24905: {"value": "User Management"}
+    register: issue
+  - name: Show Ticket Number
+    debug: 
+       msg:  The Ticket Number is  {{ issue.meta.key }}
+
