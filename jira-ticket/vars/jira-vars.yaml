@@ -1,19 +1,13 @@
-server: 'https://jira.sp.vodafone.com/'
+server: 'JIRA URL'
 project: 'VDS'
-gatserver: 'https://cps.jira.agile.vodafone.com/'
+gatserver: 'JIRA URL'
 gatproject: 'GAT'
 title: 'Create User for DBs in DXL-CZ-NONPROD Atlas MongoDB'
 description: '
 
-please create readwrite user for the following Database in  DXL-CZ-NONPROD
-https://cloud.mongodb.com/v2/610014bbab1e6c74c724d74a#clusters
-
 data needed: 
-namepsace= dxl-sys-cz -
-Databse-Name= newdb  newdb2   -
-User-Name= newdb_dba_sys  newdb2_dba_sys   -
-namepsace= dxl-pre-cz -
-Databse-Name= newdb  newdb2   -
-User-Name= newdb_dba_pre  newdb2_dba_pre   -
+namepsace= dev
+Databse-Name= newdb
+
 '
 description1: 'test'
